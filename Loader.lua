@@ -156,7 +156,7 @@ local Items = {
 
 	local CUMBAT = Coasting:CreateTab("Combat")
 
-	local CUMBAT3 = CUMBAT:CreateSection("Slaps")
+	local CUMBAT3 = CUMBAT:CreateSection("Main")
 
 	local CUMBAT2 = CUMBAT:CreateSection("Ac+Fly")
 
@@ -164,7 +164,7 @@ local Items = {
 
 	local MISCUM = Coasting:CreateTab("Misc")
 
-	local MISCUM2 = MISCUM:CreateSection("Badges")
+	local MISCUM2 = MISCUM:CreateSection("Badges+Use Gube Of Ice")
 
 	local MISCUM3 = MISCUM:CreateSection("Items")
 
@@ -241,6 +241,40 @@ task.wait(.2)
 fireclickdetector(game:GetService("Workspace").Map:WaitForChild("OriginOffice").Door.Keypad.Buttons.Enter.ClickDetector)
 
     end)
+		
+		
+		
+	MISCUM2:CreateButton("Use Permanent Gube Of Ice", function()
+            for i, v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+
+                if
+
+                    v:IsA("Tool") and v.Name == "Cube of Ice"
+
+                 then
+
+                    v.Parent = game.Players.LocalPlayer.Character
+
+                end
+
+            end
+
+            wait(.5)
+
+            for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+
+                if v:IsA("Tool") then
+
+                    v:Activate()
+
+                end
+
+            end
+
+        end
+
+    )
+
 
     MISCUM3:CreateToggle("Get All Items", function(Grab)
 
@@ -453,6 +487,50 @@ _G.settingsTable.GrabItems = Grab
 				end
 
 			end)
+
+
+
+    CUMBAT3:CreateToggle("Auto Kill All Player (OP)",function(GetPlayer)
+        if GetPlayer == true then
+            getgenv().KILLPEOPLE = true
+            spawn(
+                function()
+                    while getgenv().KILLPEOPLE do
+                        for _, ok in ipairs(workspace:GetChildren()) do
+                            if ok:FindFirstChild("Humanoid") then
+                                game:GetService("ReplicatedStorage").Events.Slap:FireServer(ok.Torso)
+                                wait(0.01)
+                            end
+                        end
+                    end
+                end
+            )
+            while getgenv().KILLPEOPLE do
+                for _, v in pairs(game.Players:GetPlayers()) do
+                    if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") then
+                        while v.Character:IsDescendantOf(workspace) and v.Character.Humanoid.Health > 1 do
+                            wait(0.1)
+                            tweenService, tweenInfo =
+                                game:GetService("TweenService"),
+                                TweenInfo.new(.5, Enum.EasingStyle.Linear)
+                            tween =
+                                tweenService:Create(
+                                game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart,
+                                tweenInfo,
+                                {CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 0)}
+                            )
+                            tween:Play()
+                            Wait(0.2)
+                        end
+                    end
+                end
+            end
+        else
+            getgenv().KILLPEOPLE = false
+        end
+    end
+)
+
 
     CUMBAT2:CreateButton("Infinite Yield",function()
 
