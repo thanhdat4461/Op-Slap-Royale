@@ -242,7 +242,7 @@ fireclickdetector(game:GetService("Workspace").Map:WaitForChild("OriginOffice").
 
     end)
 
-    MISCUM3:CreateToggle("Get All Items", function()
+    MISCUM3:CreateToggle("Get All Items", function(Grab)
 
 _G.settingsTable.GrabItems = Grab    
 
