@@ -156,7 +156,7 @@ local Items = {
 
 	local CUMBAT = Coasting:CreateTab("Combat")
 
-	local CUMBAT3 = CUMBAT:CreateSection("Main")
+	local CUMBAT3 = CUMBAT:CreateSection("Slaps")
 
 	local CUMBAT2 = CUMBAT:CreateSection("Ac+Fly")
 
@@ -281,28 +281,6 @@ _G.settingsTable.GrabItems = Grab
     end
 
     )
-
-    MISCUM2:CreateButton(
-
-        "One Shot ( One Time Use ) ",
-
-        function()
-
-            local lp = game.Players.LocalPlayer
-
-            for k, v in ipairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-
-                if v.Name == "Cube of Ice" then
-
-                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-
-                    v:Activate()
-
-                end
-
-            end
-
-        end
 
     MISCUM3:CreateButton("Use All Permanent Items", function()
 
@@ -475,8 +453,6 @@ _G.settingsTable.GrabItems = Grab
 				end
 
 			end)
-   
-
 
     CUMBAT2:CreateButton("Infinite Yield",function()
 
@@ -504,11 +480,11 @@ end)
 
     end)
 
-    Local1:CreateSlider("Fov", 70, 120, 70, false, function(SLICES)
+    Local1:CreateSlider("Fov", 70, 120, 70, false, function(WS2)
 
 	
 
-    _G.settingsTable.Fov = SLICES
+    _G.settingsTable.Fov = WS2
 
 	
 
