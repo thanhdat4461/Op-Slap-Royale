@@ -641,7 +641,16 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/thanhdat4461/Fly-Gui-
 
 end)
 
-						
+
+    CUMBAT2:CreateButton("Inf Jump",function()
+local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then		
+	game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+end)
+
     Local1:CreateSlider("Walkspeed", 20, 10000, 20, false, function(JP)
 
 	
