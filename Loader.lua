@@ -120,7 +120,7 @@ local Items = {
 
 	local Coasting =
 
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/cheesynob39/Coasting/main/Source.lua")))()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/thanhdat4461/Coasting/main/Source.lua")))()
 
     local namecall
 
@@ -276,7 +276,7 @@ fireclickdetector(game:GetService("Workspace").Map:WaitForChild("OriginOffice").
     )
 
 
-    MISCUM3:CreateToggle("Get All Items", function(Grab)
+    MISCUM3:CreateToggle("Auto Grab Items", function(Grab)
 
 _G.settingsTable.GrabItems = Grab    
 
@@ -490,7 +490,7 @@ _G.settingsTable.GrabItems = Grab
 
 
 
-    CUMBAT3:CreateToggle("Auto Kill All Player (OP)",function(GetPlayer)
+    CUMBAT3:CreateToggle("Auto Kill Random Player (OP)",function(GetPlayer)
         if GetPlayer == true then
             getgenv().KILLPEOPLE = true
             spawn(
